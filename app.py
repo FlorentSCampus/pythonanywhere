@@ -6,7 +6,9 @@ application = default_app()
 
 @route("/")
 def hello_world():
-    return "Hello from Bottle!"
+    tpl = template("mysite/templates/home")
+    return tpl
+    # return "Hello from Bottle!"
 
 @route("/todo")
 def show_todo():
