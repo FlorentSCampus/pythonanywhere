@@ -31,18 +31,21 @@ def push():
     subprocess.run(["git", "push", "origin", "main"])
 
 def pull():
-    response = requests.post(
-        'https://www.pythonanywhere.com/api/v0/user/{username}/consoles/{id}/send_input/'.format(
-            username = username,
-            id = id
-        ),
-        headers = {'Authorization': 'Token {token}'.format(token = token),
-                   'Content-Type': 'application/json'},
-        json = {'input': 'cd ~/mysite && git pull\n'}
-    )
+    while True:
+        response = requests.post(
+            'https://www.pythonanywhere.com/api/v0/user/{username}/consoles/{id}/send_input/'.format(
+                username = username,
+                id = id
+            ),
+            headers = {'Authorization': 'Token {token}'.format(token = token),
+                    'Content-Type': 'application/json'},
+            json = {'input': 'cd ~/mysite && git pull\n'}
+        )
 
-    if response.returncode == 0:
-        reload()
+        if response.returncode == 0:
+            break
+        else:
+            time.sleep(5)
 
 def reload():
     response = requests.post(
@@ -59,5 +62,4 @@ else:
     print("OK")
     push()
     pull()
-    # time.sleep(25)
-    # reload()
+    reload()
