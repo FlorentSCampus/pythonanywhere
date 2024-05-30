@@ -1,5 +1,8 @@
+# RELOAD DON'T WORK !!!
+
 import subprocess
 import requests
+import time
 
 username = 'Florent'
 token = '9887f29efdf8a0378c44d3982a851be94dd1cf2c'
@@ -21,8 +24,10 @@ else:
 result = subprocess.run(["pytest"], shell = True, capture_output = True, text = True)
 
 def push():
+    print("Enter your message:")
+    message = input().strip()
     subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-m", "FEAT: CI/CD"])
+    subprocess.run(["git", "commit", "-m", message])
     subprocess.run(["git", "push", "origin", "main"])
 
 def pull():
@@ -51,4 +56,5 @@ else:
     print("OK")
     push()
     pull()
+    time.sleep(25)
     reload()
