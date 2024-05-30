@@ -41,6 +41,10 @@ def pull():
         json = {'input': 'cd ~/mysite && git pull\n'}
     )
 
+    if response.returncode != 0:
+        print('PULL ERROR')
+        return
+
 def reload():
     response = requests.post(
         'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain_name}/reload/'.format(
@@ -50,11 +54,15 @@ def reload():
         headers = {'Authorization': 'Token {token}'.format(token = token)}
     )
 
+    if response.returncode != 0:
+        print('RELOAD ERROR')
+        return
+
 if result.returncode:
     print("ERROR")
 else:
     print("OK")
     push()
     pull()
-    time.sleep(25)
+    # time.sleep(25)
     reload()
