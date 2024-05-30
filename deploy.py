@@ -20,6 +20,11 @@ else:
 
 result = subprocess.run(["pytest"], shell=True, capture_output=True, text=True)
 
+def push():
+    subprocess.run(["git", "add", "."])
+    subprocess.run(["git", "commit", "-m", "FEAT: CI/CD"])
+    subprocess.run(["git", "push", "origin", "main"])
+
 def pull():
     response = requests.post(
         'https://www.pythonanywhere.com/api/v0/user/{username}/consoles/{id}/send_input/'.format(
@@ -47,12 +52,6 @@ def reload():
         print(response.content)
     else:
         print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
-
-
-def push():
-    subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-m", "CI/CD"])
-    subprocess.run(["git", "push", "origin", "main"])
 
 if result.returncode:
     print("ERROR")
