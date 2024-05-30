@@ -56,5 +56,5 @@ else:
     print("OK")
     push()
     pull()
-    time.sleep(25)
+    time.sleep(10)
     reload()
