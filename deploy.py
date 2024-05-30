@@ -41,9 +41,8 @@ def pull():
         json = {'input': 'cd ~/mysite && git pull\n'}
     )
 
-    if response.returncode != 0:
-        print('PULL ERROR')
-        return
+    if response.returncode == 0:
+        reload()
 
 def reload():
     response = requests.post(
@@ -54,10 +53,6 @@ def reload():
         headers = {'Authorization': 'Token {token}'.format(token = token)}
     )
 
-    if response.returncode != 0:
-        print('RELOAD ERROR')
-        return
-
 if result.returncode:
     print("ERROR")
 else:
@@ -65,4 +60,4 @@ else:
     push()
     pull()
     # time.sleep(25)
-    reload()
+    # reload()
