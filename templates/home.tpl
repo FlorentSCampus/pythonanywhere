@@ -1,6 +1,6 @@
 <p>HOME</p>
 <p>TEST WAITING</p>
-<p>666</p>
+<p>WAIT...</p>
 <br>
 <nav>
 <ul>
