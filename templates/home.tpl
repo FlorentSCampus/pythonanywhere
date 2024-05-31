@@ -1,5 +1,6 @@
 <p>HOME</p>
 <p>TEST n°10</p>
+<p>RELOAD COMPLETE</p>
 <br>
 <nav>
 <ul>
