@@ -70,6 +70,7 @@ else:
             reload()
             break
         else:
+            print("WAIT")
             time.sleep(5)
     
 
