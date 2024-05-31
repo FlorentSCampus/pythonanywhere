@@ -56,7 +56,7 @@ def pull():
 
     json = {
         # "input": "cd ~/mysite && git pull\n"
-        "input": "tshark\n"
+        "input": "watch -n 1 'ps aux'\n"
     }
 
     req = requests.post(url, headers=headers, json=json)
