@@ -103,13 +103,16 @@ else:
 
         push()
 
-        print("PULL...")
-
         while pull().status_code == 200:
-            status = get_status().json()
 
-            time.sleep(.5)
-            print(status)
+            while True:
+
+                if get_status().json()["running"] == False:
+                    print("PULL COMPLETED")
+                    break
+                else:
+                    print("PULL...")
+                    time.sleep(1)
 
             break
         break
