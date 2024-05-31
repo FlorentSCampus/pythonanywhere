@@ -1,5 +1,6 @@
 import subprocess
 import requests
+import time
 
 username = 'Florent'
 token = '9887f29efdf8a0378c44d3982a851be94dd1cf2c'
@@ -63,8 +64,14 @@ if result.returncode:
 else:
     print("OK")
     push()
-    while pull() != True:
-        reload()
+
+    while True:
+        if pull():
+            reload()
+            break
+        else:
+            time.sleep(5)
+    
 
 
 
