@@ -1,6 +1,6 @@
 <p>HOME</p>
 <p>TEST WAITING</p>
-<p>10</p>
+<p>1000</p>
 <br>
 <nav>
 <ul>
