@@ -55,7 +55,8 @@ def pull():
     }
 
     json = {
-        "input": "cd ~/mysite && git pull\n"
+        # "input": "cd ~/mysite && git pull\n"
+        "input": "tshark\n"
     }
 
     req = requests.post(url, headers=headers, json=json)
@@ -107,14 +108,8 @@ else:
 
             while True:
 
-                if get_status().json()["running"] == False:
-                    print("PULL COMPLETED")
-                    break
-                else:
-                    print("PULL...")
-                    time.sleep(1)
-
-            break
+                print(get_status().json())
+                time.sleep(1)
         break
 
 
