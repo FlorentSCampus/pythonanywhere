@@ -106,7 +106,7 @@ else:
 
         while pull().status_code == 200:
             status = get_status().json()
-            print(status)
+            print(status["running"])
 
             break
         break
