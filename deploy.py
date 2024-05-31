@@ -104,29 +104,15 @@ else:
 
         push()
 
+        print("PULL...")
+
         while pull().status_code == 200:
 
-            while True:
+            print("PULL COMPLETED")
+            print("RELOADING...")
 
-                print(get_status().json())
-                time.sleep(1)
+            while reload().status_code == 200:
+                print("RELOADING COMPLETED")
+                break
+            break
         break
-
-
-    # while get_request():
-    #     print("SUCCESSFUL CONNECTION")
-
-    #     push()
-
-    #     print("PULL...")
-
-    #     while pull():
-
-    #         print("PULL COMPLETED")
-    #         print("RELOADING...")
-
-    #         while reload():
-    #             print("RELOADING COMPLETED")
-    #             break
-    #         break
-    #     break
