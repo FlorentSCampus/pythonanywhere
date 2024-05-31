@@ -104,13 +104,11 @@ else:
 
         print("PULL...")
 
-        status = pull()
+        while pull().status_code == 200:
+            status = get_status().json()
+            print(status)
 
-        print(status.status_code)
-
-        # while pull() == 200:
-        #     if 
-            # break
+            break
         break
 
 
