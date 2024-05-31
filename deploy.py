@@ -55,8 +55,7 @@ def pull():
     }
 
     json = {
-        # "input": "cd ~/mysite && git pull\n"
-        "input": "watch -n 1 'ps aux'\n"
+        "input": "cd ~/mysite && git pull\n"
     }
 
     req = requests.post(url, headers=headers, json=json)
