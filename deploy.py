@@ -1,8 +1,5 @@
-# RELOAD DON'T WORK !!!
-
 import subprocess
 import requests
-import time
 
 username = 'Florent'
 token = '9887f29efdf8a0378c44d3982a851be94dd1cf2c'
@@ -15,6 +12,7 @@ response = requests.get(
     ),
     headers = {'Authorization': 'Token {token}'.format(token=token)}
 )
+
 if response.status_code == 200:
     print('CPU quota info:')
     print(response.content)
@@ -41,7 +39,9 @@ def pull():
                  'Content-Type': 'application/json'},
         json={'input': 'cd ~/mysite && git pull\n'}
     )
+
     if response.status_code == 200:
+        print("PULL COMPLETE")
         return True
     else:
         return False
@@ -54,13 +54,16 @@ def reload():
         ),
         headers = {'Authorization': 'Token {token}'.format(token = token)}
     )
+    
+    print("RELOAD FINISHED")
+
 
 if result.returncode:
     print("ERROR")
 else:
     print("OK")
     push()
-    if pull():
+    while pull() != True:
         reload()
 
 
