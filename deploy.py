@@ -108,8 +108,8 @@ else:
         while pull().status_code == 200:
             status = get_status().json()
 
-            time.sleep(3)
-            print(status["running"])
+            time.sleep(2)
+            print(status)
 
             break
         break
